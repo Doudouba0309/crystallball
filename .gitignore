@@ -1,0 +1,30 @@
+# Local development environment
+.venv/
+venv/
+.pip-cache/
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Test and type-check caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Generated data products
+build_products/
+out/
+*.parquet
+
+# macOS
+.DS_Store

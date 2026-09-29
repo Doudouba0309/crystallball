@@ -1,0 +1,60 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "crystallball"
+version = "0.1.0"
+description = "Turn unstructured content into governed, publishable data products."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Liu Yang" }]
+keywords = [
+    "data-engineering",
+    "unstructured-data",
+    "information-extraction",
+    "data-products",
+    "document-ai",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Text Processing :: General",
+]
+
+# The core is deliberately dependency-free so the pipeline runs anywhere.
+dependencies = []
+
+[project.optional-dependencies]
+office = ["python-docx>=1.1", "python-pptx>=1.0", "openpyxl>=3.1"]
+html = ["lxml>=5.0"]
+image = ["Pillow>=10.0"]
+pdf = ["pypdf>=4.0"]
+parquet = ["pandas>=2.0", "pyarrow>=15.0"]
+data = ["pandas>=2.0"]
+all = [
+    "python-docx>=1.1",
+    "python-pptx>=1.0",
+    "openpyxl>=3.1",
+    "lxml>=5.0",
+    "Pillow>=10.0",
+    "pypdf>=4.0",
+    "pandas>=2.0",
+]
+dev = ["pytest>=8.0", "pytest-cov>=5.0"]
+
+[project.scripts]
+crystallball = "crystallball.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/crystallball"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q --strict-markers"
